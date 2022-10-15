@@ -13,7 +13,7 @@
 //npm create vite@latest martin-exequiel-ecommerce-reactjs
 //npm i
 //npm run dev
-//ctrl + i sobre el link
+//ctrl + i sobre el  
 
 
 
