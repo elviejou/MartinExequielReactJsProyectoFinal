@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2021.5 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.4186mm" height="5.4186mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 541.86 541.86"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:none}
+    .fil2 {fill:#FEFEFE}
+    .fil1 {fill:red}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <path d="M270.93 8.97c144.68,0 261.96,117.28 261.96,261.96 0,144.68 -117.28,261.96 -261.96,261.96 -144.68,0 -261.96,-117.28 -261.96,-261.96 0,-144.68 117.28,-261.96 261.96,-261.96z"/>
+   </clipPath>
+     <clipPath id="id1">
+      <path d="M166.04 110.99l292.84 0 0 342.4c-47.61,49.03 -114.21,79.5 -187.95,79.5 -37.3,0 -72.77,-7.81 -104.89,-21.86l0 -400.04z"/>
+     </clipPath>
+     <clipPath id="id2">
+      <path d="M270.93 8.97c144.68,0 261.96,117.28 261.96,261.96 0,144.68 -117.28,261.96 -261.96,261.96 -144.68,0 -261.96,-117.28 -261.96,-261.96 0,-144.68 117.28,-261.96 261.96,-261.96z"/>
+     </clipPath>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0" width="541.86" height="541.86"/>
+  <path class="fil1" d="M270.93 8.97c144.68,0 261.96,117.28 261.96,261.96 0,144.68 -117.28,261.96 -261.96,261.96 -144.68,0 -261.96,-117.28 -261.96,-261.96 0,-144.68 117.28,-261.96 261.96,-261.96z"/>
+  <g style="clip-path:url(#id0)">
+   <g id="_2997964461760">
+    <g>
+    </g>
+    <g style="clip-path:url(#id1)">
+     <image x="166.04" y="110.99" width="292.84" height="461.41" xlink:href="icono_Images\icono_ImgID1.png"/>
+    </g>
+    <g style="clip-path:url(#id2)">
+    </g>
+    <path class="fil2" d="M327.86 176.91l-155.92 0.05 -0.03 80.59 156.73 0.11 0 73.68 -155.96 0.04 -0.01 157.43 0 0.05c0,40.29 0.28,67.8 0.28,76.46 23.82,-0.22 51.82,0.31 75.75,-0.02l0.06 -153.96c9.4,-0.74 29.22,0.29 41.09,-0.19 73.33,-2.96 147.71,-43.5 169.28,-119.38 26.54,-93.38 -44.95,-188.65 -131.24,-187.77l-0.03 72.91z"/>
+   </g>
+  </g>
+  <path class="fil0" d="M270.93 8.97c144.68,0 261.96,117.28 261.96,261.96 0,144.68 -117.28,261.96 -261.96,261.96 -144.68,0 -261.96,-117.28 -261.96,-261.96 0,-144.68 117.28,-261.96 261.96,-261.96z"/>
+ </g>
+</svg>

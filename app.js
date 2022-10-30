@@ -15,5 +15,8 @@
 //npm run dev
 //ctrl + i sobre el  
 
+//let i = i+1 // i++ // i+=1
+
+
 
 
