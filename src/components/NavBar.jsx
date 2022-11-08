@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Cartwidget from './CartWidjet';
+import UserWidget from './UserWidget';
 
 export default class NavBar extends Component {
   render() {
@@ -39,24 +41,19 @@ export default class NavBar extends Component {
            <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Buscar productos"
               className="me-2"
-              aria-label="Search"
             />
-            <Button variant="danger">Search</Button>
+            <Button variant="danger" className="bi-search" ></Button>
            </Form>
-            <a href="#" target="_blank">
-            <img
-              src="/src/assets/img/User.svg"
-              alt="Usuario"
-            />
-            </a>
-            <a href="#" target="_blank">
-            <img
-              src="/src/assets/img/Carrito.svg"
-              alt="Carrito"
-            />
-            </a>
+           <Nav>
+                    <Nav.Link eventKey={2} href="#Carrito">
+                        <Cartwidget />
+                    </Nav.Link>
+                    <Nav.Link eventKey={3} href="#Perfil">
+                        <UserWidget />
+                    </Nav.Link>
+            </Nav>
          
         </Navbar.Collapse>
       </Container>

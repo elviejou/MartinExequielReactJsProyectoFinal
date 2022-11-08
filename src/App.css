@@ -43,3 +43,14 @@ html, body, #root, .App {
 .read-the-docs {
   color: #888;
 }
+
+.bi-cart {
+  font-size: 35px;
+  color: rgb(255, 0, 0);
+}
+
+.bi-person {
+  font-size: 35px;
+  color: rgb(255, 0, 0);
+}
+

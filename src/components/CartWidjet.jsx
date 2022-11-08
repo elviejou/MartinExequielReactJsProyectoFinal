@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
-export default class CartWidjet extends Component {
-  render() {
-    return (
-      <div>CartWidjet</div>
-    )
-  }
+const Cartwidget = () => {
+  return (
+    <div className='botonCarrito'>
+        <button type="button" className="btn btn-light" ><span className="bi-cart"> </span></button>
+    </div>
+  )
 }
+
+export default Cartwidget
