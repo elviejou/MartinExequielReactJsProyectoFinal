@@ -1,4 +1,4 @@
-let productos = [{"id":"117833","descripcion":"CINTA ADHESIVA MOOVING GLITTER X 3 ROLLOS - 2110302","codigo":"1819092","precio":"375.2","imagen":"https:\/\/franpapel.com\/wp-content\/uploads\/2021\/12\/1819092.jpg"},
+let listaProductos = [{"id":"117833","descripcion":"CINTA ADHESIVA MOOVING GLITTER X 3 ROLLOS - 2110302","codigo":"1819092","precio":"375.2","imagen":"https:\/\/franpapel.com\/wp-content\/uploads\/2021\/12\/1819092.jpg"},
 {"id":"117835","descripcion":"CINTA MOOVING WASHI TAPE 1.5CM X 3MT CJ X 5 - 2110104","codigo":"1819095","precio":"661.45","imagen":"https:\/\/franpapel.com\/wp-content\/uploads\/2021\/12\/1819095.jpg"},
 {"id":"117843","descripcion":"SEPARADOR MOOVING SPIDERMAN PQ X 12 - 1101101","codigo":"1817879","precio":"409.14","imagen":"https:\/\/franpapel.com\/wp-content\/uploads\/2021\/12\/1817879.jpg"},
 {"id":"121847","descripcion":"CARPETA MOOVING A4 2 TAPAS COMO QUIERES - 1007136","codigo":"1817145","precio":"1186.5","imagen":"https:\/\/franpapel.com\/wp-content\/uploads\/2022\/01\/1817145.jpg"},
@@ -71,11 +71,13 @@ let productos = [{"id":"117833","descripcion":"CINTA ADHESIVA MOOVING GLITTER X 
 {"id":"131260","descripcion":"CUADERNO MOOVING NOTEBOOK SKETCH COSIDO 19X24 - 1249132","codigo":"1812164","precio":"1477.44","imagen":"https:\/\/franpapel.com\/wp-content\/uploads\/2022\/08\/1812164.jpg"}]
 
 export const productosTienda = (id) => {
+
     return new Promise( ( resuleto, rechazada ) => {
         setTimeout(()=>{
-            resuleto(productos)
+            resuleto(id ? listaProductos.find ( item => item.id == id) : listaProductos)
         }, 2000)
     })
 }
 
+export default productosTienda
     

@@ -2,65 +2,36 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { productosTienda } from '../../utils/productosTienda'
+import ItemList from '../ItemList/ItemList'
 
 
 
-const ItemListContainer = (productos) => {  
-    const [producto, setproducto] = useState([])
+const ItemListContainer = (listaProductos) => {  
+    const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-    const {productosId} = useParams()
+    const {productoId} = useParams()
 
     useEffect(()=> {
-        if (productosId) {
+        if (productoId) {
             productosTienda()
-            .then(resp =>  setproducto(resp.filter(producto => producto.id === id)))    
+            .then(resp =>  setProductos(resp.filter(producto => producto.id === id)))    
             .catch(err => console.log(err))
             .finally(()=>setLoading(false)) 
             
         }else{
             productosTienda()
-            .then(resp =>  setproducto(resp))    
+            .then(resp =>  setProductos(resp))    
             .catch(err => console.log(err))
             .finally(()=>setLoading(false)) 
         }
         
         
-    }, [productosId])
+    }, [productoId])
     
 
     return (
                 <div className='contenedorProductos'>
-                        { producto.map( productos =>  <div key={productos.id} className='tarjeta2'>
-                                                <Link to={`/detail/${productos.id}`}>
-                                                <img src={productos.imagen} className="w-50"  /><br />
-                                                    <div className='nombreProducto'>
-                                                        {productos.descripcion}
-                                                    </div>
-                                                    <div className='precioProducto'>
-                                                        <center>
-                                                             <h5> ${productos.precio} IVA inc*</h5>
-                                                             
-                                                        </center>
-                                                    </div>
-                                                    <div className='skuProducto'>
-                                                        <center>
-                                                             <h6>Código: {productos.codigo} </h6>
-                                                        </center>
-                                                    </div>
-                                                </Link>
-                                                <div className='agregarAlCarrito'>
-                                                    <div className='cantidadAgregarCarrito'>
-                                                        <center>
-                                                            <input type='button' value='-' className='cantidadMenos' field='quantity'/>
-                                                            <input type='text' name='cantidad' className='cantidadAgregar'/>
-                                                            <input type='button' value='+' className='cantidadMas' field='quantity'/>
-                                                        </center>                                                       
-                                                    </div>    
-                                                    <div>
-                                                        <button className="botonAgregarAlCarrito">Agregar</button>
-                                                    </div>
-                                                </div>
-                                            </div> )  }     
+                <ItemList productos={productos}/>     
                     
                 </div>
     )
