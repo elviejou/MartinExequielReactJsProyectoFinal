@@ -6,31 +6,31 @@ import { productosTienda } from '../../utils/productosTienda'
 
 
 const ItemListContainer = (productos) => {  
-    const [products, setProducts] = useState([])
+    const [producto, setproducto] = useState([])
     const [loading, setLoading] = useState(true)
-    const {categoriaId} = useParams()
+    const {productosId} = useParams()
 
     useEffect(()=> {
-        if (productos.id) {
+        if (productosId) {
             productosTienda()
-            .then(resp =>  setProducts(resp.filter(producto => producto.id === id)))    
+            .then(resp =>  setproducto(resp.filter(producto => producto.id === id)))    
             .catch(err => console.log(err))
             .finally(()=>setLoading(false)) 
             
         }else{
             productosTienda()
-            .then(resp =>  setProducts(resp))    
+            .then(resp =>  setproducto(resp))    
             .catch(err => console.log(err))
             .finally(()=>setLoading(false)) 
         }
         
         
-    }, [categoriaId])
+    }, [productosId])
     
 
     return (
                 <div className='contenedorProductos'>
-                        { products.map( productos =>  <div key={productos.id} className='tarjeta2'>
+                        { producto.map( productos =>  <div key={productos.id} className='tarjeta2'>
                                                 <Link to={`/detail/${productos.id}`}>
                                                 <img src={productos.imagen} className="w-50"  /><br />
                                                     <div className='nombreProducto'>
