@@ -1,12 +1,12 @@
 html, body, #root, .App {
-  height: 100%;
-  width: 100%;
+  
 }
 #root {
-
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  flex-direction: column;
 }
 
 .logo {
@@ -54,3 +54,73 @@ html, body, #root, .App {
   color: rgb(255, 0, 0);
 }
 
+.contenedorProductos{
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+ 
+  
+}
+
+.tarjeta2{
+  width:230px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      box-shadow: 1px 1px 12px 0 rgba(0,0,0,0.2);
+      margin: 10px;
+      padding: 10px;
+}
+
+.nombreProducto{
+  padding: 3px;
+  color: black; 
+}
+
+.precioProducto{
+  padding: 3px;
+  color: red;
+}
+.skuProducto{
+  padding: 3px;
+  color: black;
+}
+
+.agregarAlCarrito{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.cantidadAgregarCarrito{
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  justify-items:baseline
+}
+
+.cantidadAgregar {
+  width: 30px;
+  height: 25px;
+  text-align: center;
+  background-color: white;
+  border: none;
+  color: black;
+
+}
+.cantidadMenos { 
+  width:25px; 
+  height:25px;
+  background-color: red;
+  border: none;
+}
+.cantidadMas { 
+  width:25px; 
+  height:25px;
+  background-color: red;
+  border: none;
+}
+.botonAgregarAlCarrito{
+  background-color: red;
+  border: none;
+}
