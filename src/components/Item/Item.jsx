@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import productosTienda from '../../utils/productosTienda'
+import Cantidad from '../Cantidad/Cantidad'
 
 const Item = ({listaProductos}) => {
+    const onAdd = (cantidadAgregada) => {
+        console.log(cantidadAgregada)
+    }
   return (
     <div className='tarjeta2'>
                                                 <Link to={`/detail/${listaProductos.id}`}>
@@ -22,18 +26,9 @@ const Item = ({listaProductos}) => {
                                                         </center>
                                                     </div>
                                                 </Link>
-                                                <div className='agregarAlCarrito'>
-                                                    <div className='cantidadAgregarCarrito'>
-                                                        <center>
-                                                            <input type='button' value='-' className='cantidadMenos' field='quantity'/>
-                                                            <input type='text' name='cantidad' className='cantidadAgregar'/>
-                                                            <input type='button' value='+' className='cantidadMas' field='quantity'/>
-                                                        </center>                                                       
-                                                    </div>    
-                                                    <div>
-                                                        <button className="botonAgregarAlCarrito">Agregar</button>
-                                                    </div>
-                                                </div>
+                                                
+                                                <Cantidad stock={10} inicial={1} onAdd={onAdd} />         
+                                                    
                                             </div>
   )
 }
