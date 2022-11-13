@@ -124,3 +124,21 @@ flex-wrap: wrap;
   background-color: red;
   border: none;
 }
+.detalleProducto{
+  display: flex;
+
+}
+.agregarCarritoDetalle{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+.nombreProductoDetalle{
+  margin-top: 100px;
+  font-size: 24px;
+}
+.precioProductoDetalle{
+  margin-top: 30px;
+  font-size: 35px !important;
+}

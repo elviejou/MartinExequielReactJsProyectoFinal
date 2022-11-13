@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Cartwidget from '../CartWidget/CartWidjet';
 import UserWidget from '../UserWidget/UserWidget';
 
+
 export default class NavBar extends Component {
   render() {
     return (
