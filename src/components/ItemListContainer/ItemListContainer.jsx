@@ -14,7 +14,7 @@ const ItemListContainer = (listaProductos) => {
     useEffect(()=> {
         if (productoId) {
             productosTienda()
-            .then(resp =>  setProductos(resp.filter(producto => producto.id === id)))    
+            .then(resp =>  setProductos(resp.filter(producto => producto.categoria === productoId)))    
             .catch(err => console.log(err))
             .finally(()=>setLoading(false)) 
             

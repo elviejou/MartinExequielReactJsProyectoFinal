@@ -23,6 +23,7 @@ const Item = ({listaProductos}) => {
                                                     <div className='skuProducto'>
                                                         <center>
                                                              <h6>Código: {listaProductos.codigo} </h6>
+                                                             <h6>Categoria: {listaProductos.categoria} </h6>
                                                         </center>
                                                     </div>
                                                 </Link>

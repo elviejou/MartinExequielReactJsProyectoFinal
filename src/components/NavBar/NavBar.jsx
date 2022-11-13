@@ -7,6 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Cartwidget from '../CartWidget/CartWidjet';
 import UserWidget from '../UserWidget/UserWidget';
+import { Link } from 'react-router-dom';
 
 
 export default class NavBar extends Component {
@@ -33,10 +34,12 @@ export default class NavBar extends Component {
             <Nav.Link href="#action1">NOSOTROS</Nav.Link>
             <Nav.Link href="#action2">CONTACTO</Nav.Link>
             <Nav.Link href="#action5">UBICACIÓN</Nav.Link>
-            <NavDropdown title="MI CUENTA" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">INGRESAS</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">REGISTRARSE</NavDropdown.Item>
+            <NavDropdown title="CATEGORIAS PRODUCTOS" id="navbarScrollingDropdown">
+              <Link to='/categoria/'>Todos</Link><br />
+              <Link to='/categoria/Cuadernos'>Cuadernos</Link><br />
+              <Link to='/categoria/Agendas'>Agendas</Link><br />
+              <Link to='/categoria/Marcadores'>Marcadores</Link><br />
+              <Link to='/categoria/Varios'>Varios</Link><br />
             </NavDropdown>
           </Nav>
            <Form className="d-flex">
@@ -48,12 +51,12 @@ export default class NavBar extends Component {
             <Button variant="danger" className="bi-search" ></Button>
            </Form>
            <Nav>
-                    <Nav.Link eventKey={2} href="#Carrito">
+                    <Link to="/cart">
                         <Cartwidget />
-                    </Nav.Link>
-                    <Nav.Link eventKey={3} href="#Perfil">
+                    </Link>
+                    <Link to="#">
                         <UserWidget />
-                    </Nav.Link>
+                    </Link>
             </Nav>
          
         </Navbar.Collapse>

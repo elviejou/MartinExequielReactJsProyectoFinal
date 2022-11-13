@@ -24,6 +24,7 @@ const ItemDetail = ({producto}) => {
                 <div className='skuProductoDetalle'>
                     <center>
                          <h6>Código: {producto.codigo} </h6>
+                         {producto.categoria}
                     </center>
                 </div>
             
