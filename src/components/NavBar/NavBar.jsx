@@ -17,7 +17,7 @@ export default class NavBar extends Component {
       <Navbar sticky="top" bg="light" expand="lg">
       <Container fluid>
       {/* LOGO EN MENU */}
-      <Navbar.Brand href="#">
+      <Navbar.Brand href="/categoria/">
             <img
               src="/src/assets/img/logo.png"
               width="250"
