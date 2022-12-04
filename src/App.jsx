@@ -6,34 +6,26 @@ import NavBar from './components/NavBar/NavBar'
 import ItemDetailContainer from './pages/ItemDetailContainer/ItemDetailContainer'
 import Cart from './pages/Cart/Cart'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import CartContextProvider , { useCartContext } from './components/Context/CartContext'
 
 
-
-// import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-
-    const saludo = 'saludando' // estado
-
-    const saludar = () => {
-        console.log('hola soy app')
-    } 
-
     return (
-        // Me da el contexto para poder usar todas las funciones de la librería
         <BrowserRouter> 
-            <NavBar  />    
-            <Routes>
-                <Route path='/' element={<ItemListContainer greeting={saludo} saludar={ saludar } />} />
-                <Route path='/categoria/:productoId' element={<ItemListContainer greeting={saludo} saludar={ saludar } />} />
-                <Route path='/detail/:productId' element={<ItemDetailContainer />} />
-                <Route path='/cart'  element={<Cart />}/>
-                {/* <Route path='/404Notfound' element={<NotFound404 />} />   */}
+            <CartContextProvider>
+                <NavBar  />    
+                <Routes>
+                    <Route path='/' element={<ItemListContainer />} />
+                    <Route path='/categoria/:productoId' element={<ItemListContainer />} />
+                    <Route path='/detail/:productId' element={<ItemDetailContainer />} />
+                    <Route path='/cart'  element={<Cart />}/>
+                    {/* <Route path='/404Notfound' element={<NotFound404 />} />   */}
 
-                <Route path='*' element={<Navigate to='/' />} />             
-            </Routes>
+                    <Route path='*' element={<Navigate to='/' />} />             
+                </Routes>
+                </CartContextProvider>
         </BrowserRouter>
     )
 }
@@ -44,16 +36,3 @@ export default App
 
 
 
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-    
-//     <div  className="App">
-//       <NavBar/>
-//     </div>
-//   )
-// }
-
-// export default App

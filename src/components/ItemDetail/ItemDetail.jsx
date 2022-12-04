@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { productosTienda } from '../../utils/productosTienda'
 import Cantidad from '../Cantidad/Cantidad'
+import { useCartContext } from "../Context/CartContext"
 
 const ItemDetail = ({producto}) => {
+    const {listaCarrito, agregarAlCarrito} = useCartContext()
     const onAdd = (cantidadAgregada) => {
         console.log(cantidadAgregada)
+        agregarAlCarrito({producto, Cantidad})
     }
+    console.log (listaCarrito)
   return (
         <div className='detalleProducto'>
             <img src={producto.imagen} className="w-50"  /><br />
@@ -26,9 +28,7 @@ const ItemDetail = ({producto}) => {
                          <h6>Código: {producto.codigo} </h6>
                          {producto.categoria}
                     </center>
-                </div>
-            
-            
+                </div> 
                 <Cantidad stock={10} inicial={1} onAdd={onAdd} />    
             </div>
         </div>
