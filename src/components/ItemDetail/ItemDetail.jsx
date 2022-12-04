@@ -1,12 +1,14 @@
 import React from 'react'
 import Cantidad from '../Cantidad/Cantidad'
-import { useCartContext } from "../Context/CartContext"
+import { useCartContext } from "../../Context/CartContext"
+import { useState } from 'react'
 
 const ItemDetail = ({producto}) => {
+    const [isCounter, setIsCounter] = useState(true)
     const {listaCarrito, agregarAlCarrito} = useCartContext()
     const onAdd = (cantidadAgregada) => {
         console.log(cantidadAgregada)
-        agregarAlCarrito({producto, Cantidad})
+        agregarAlCarrito({...producto, cantidadAgregada})
     }
     console.log (listaCarrito)
   return (

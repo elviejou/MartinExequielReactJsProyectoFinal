@@ -8,22 +8,25 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Cartwidget from '../CartWidget/CartWidjet';
 import UserWidget from '../UserWidget/UserWidget';
 import { Link } from 'react-router-dom';
+import { useCartContext } from "../../Context/CartContext"
 
 
-export default class NavBar extends Component {
-  render() {
+const NavBar = () => {
+  const { cantidadTotal } = useCartContext()
+    
     return (
+      
       <div>
       <Navbar sticky="top" bg="light" expand="lg">
       <Container fluid>
       {/* LOGO EN MENU */}
-      <Navbar.Brand href="/categoria/">
+      <Link to='/'>
             <img
               src="/src/assets/img/logo.png"
               width="250"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
-            /></Navbar.Brand>
+            /></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -35,7 +38,7 @@ export default class NavBar extends Component {
             <Nav.Link href="#action2">CONTACTO</Nav.Link>
             <Nav.Link href="#action5">UBICACIÓN</Nav.Link>
             <NavDropdown title="CATEGORIAS PRODUCTOS" id="navbarScrollingDropdown">
-              <Link to='/categoria/'>Todos</Link><br />
+              <Link to='/'>Todos</Link><br />
               <Link to='/categoria/Cuadernos'>Cuadernos</Link><br />
               <Link to='/categoria/Agendas'>Agendas</Link><br />
               <Link to='/categoria/Marcadores'>Marcadores</Link><br />
@@ -52,7 +55,8 @@ export default class NavBar extends Component {
            </Form>
            <Nav>
                     <Link to="/cart">
-                        <Cartwidget />
+                      
+                        <Cartwidget  /> { cantidadTotal() != 0 && cantidadTotal() }
                     </Link>
                     <Link to="#">
                         <UserWidget />
@@ -64,5 +68,7 @@ export default class NavBar extends Component {
     </Navbar></div>
     )
   }
-}
+
+
+export default NavBar
 

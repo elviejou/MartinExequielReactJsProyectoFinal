@@ -1,9 +1,9 @@
-import React from 'react'
+import {React, memo} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import productosTienda from '../../utils/productosTienda'
 import Cantidad from '../Cantidad/Cantidad'
 
-const Item = ({listaProductos}) => {
+const Item = memo( ({listaProductos}) => {
     const onAdd = (cantidadAgregada) => {
         console.log(cantidadAgregada)
     }
@@ -32,6 +32,6 @@ const Item = ({listaProductos}) => {
                                                     
                                             </div>
   )
-}
+})
 
 export default Item
