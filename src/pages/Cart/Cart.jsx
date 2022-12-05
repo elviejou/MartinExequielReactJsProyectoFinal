@@ -18,6 +18,15 @@ const Cart = () => {
 
 const { listaCarrito, vaciarCarrito, precioTotal, eliminarProducto} = useCartContext()
 
+const finalizarCompra = () => {
+  let compra = {}
+  compra.cliente = {name: '', email: '', telefono: ''}
+  compra.total = precioTotal()
+  console.log (compra)
+
+
+}
+
   
   return (
     <div>  
@@ -56,16 +65,16 @@ const { listaCarrito, vaciarCarrito, precioTotal, eliminarProducto} = useCartCon
                         <a href="#!" className="float-end text-black">
                           <MDBIcon fas icon="times" />
                         </a>
-                        <MDBTypography tag="h4" className="text-black ">
+                        <MDBTypography tag="h5" className="text-black ">
                         {producto.descripcion}
                         
-                        <MDBTypography tag="h6" style={{ color: "#DC3545" }}>
+                        <MDBTypography  style={{ color: "#DC3545" }}>
                           Precio: ${producto.precio}
                           </MDBTypography>
                         </MDBTypography>
-                        <MDBTypography tag="h6" style={{ color: "#9e9e9e" }}>
+                        <MDBTypography  style={{ color: "#9e9e9e" }}>
                           Codigo: {producto.codigo}
-                          <MDBTypography tag="h6" style={{ color: "#DC3545" }}>
+                          <MDBTypography  style={{ color: "#DC3545" }}>
                           Cantidad: {producto.cantidadAgregada}
                           </MDBTypography>
                         </MDBTypography>
@@ -172,9 +181,7 @@ const { listaCarrito, vaciarCarrito, precioTotal, eliminarProducto} = useCartCon
                         <a href="#!" className="text-danger"> Términos y Condiciones</a>.
                       </p>
 
-                      <MDBBtn block size="lg" className="finalizar-compra bg-danger">
-                        Finalizar Compra
-                      </MDBBtn>
+                      <button className="bg-danger"  onClick={finalizarCompra} >Finalizar Compra</button>
 
                       <MDBTypography
                         tag="h5"
