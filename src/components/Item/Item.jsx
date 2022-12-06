@@ -1,16 +1,21 @@
 import {React, memo} from 'react'
 import { Link, useParams } from 'react-router-dom'
-import productosTienda from '../../utils/productosTienda'
 import Cantidad from '../Cantidad/Cantidad'
+import { useState } from 'react'
+import { useCartContext } from "../../Context/CartContext"
 
 const Item = memo( ({listaProductos}) => {
+    const [cantidad, setCantidad] = useState(true)
+    const {listaCarrito, agregarAlCarrito} = useCartContext()
     const onAdd = (cantidadAgregada) => {
-        console.log(cantidadAgregada)
+        agregarAlCarrito({...listaProductos, cantidadAgregada})
     }
+
+    
   return (
     <div className='tarjeta2'>
                                                 <Link to={`/detail/${listaProductos.id}`}>
-                                                <img src={listaProductos.imagen} className="w-50"  /><br />
+                                                <img src={listaProductos.imagen} className="imagenItem w-50"   /><br />
                                                     <div className='nombreProducto'>
                                                         {listaProductos.descripcion}
                                                     </div>
@@ -28,7 +33,7 @@ const Item = memo( ({listaProductos}) => {
                                                     </div>
                                                 </Link>
                                                 
-                                                <Cantidad stock={10} inicial={1} onAdd={onAdd} />         
+                                                <Cantidad stock={10} inicial={1} onAdd={onAdd} />       
                                                     
                                             </div>
   )

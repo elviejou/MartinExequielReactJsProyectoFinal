@@ -1,41 +1,51 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { productosTienda } from '../../utils/productosTienda'
 import ItemList from '../ItemList/ItemList'
+import { collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
+import BoltLoader from '../../utils/boltloader'
 
-
-
-const ItemListContainer = (listaProductos) => {  
-    const [productos, setProductos] = useState([])
-    const [loading, setLoading] = useState(true)
-    const {productoId} = useParams()
-
-    useEffect(()=> {
-        if (productoId) {
-            productosTienda()
-            .then(resp =>  setProductos(resp.filter(producto => producto.categoria === productoId)))    
-            .catch(err => console.log(err))
-            .finally(()=>setLoading(false)) 
-            
-        }else{
-            productosTienda()
-            .then(resp =>  setProductos(resp))    
-            .catch(err => console.log(err))
-            .finally(()=>setLoading(false)) 
-        }
-        
-        
-    }, [productoId])
+const ItemListContainer = ({}) => {  
+    const [ productos, setProductos ] = useState([])   
+    const [ loading, setLoading ] = useState(true)
+    const { productoId } = useParams()
     
 
+        const traerProductos = () => {
+            const db = getFirestore()
+            const queryCollection = collection(db, 'productostienda')
+            const queryFiltrada = productoId ? query(queryCollection, where('categoria', '==', productoId))  
+                : queryCollection               
+            getDocs(queryFiltrada)
+            .then(resp => setProductos(resp.docs.map(prod => ({ id: prod.id, ...prod.data() }) ))) 
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
+        }
+
+    useEffect(() => {
+        traerProductos()
+    },[productoId])    
+
+
     return (
+
+
+        loading 
+            ? 
+            <div className='loaderRayo'>
+                <BoltLoader
+                    boltColor={"#ff0000"}
+                    backgroundBlurColor={"#E0E7FF"}
+                />
+            </div>     
+            :
+
                 <div className='contenedorProductos'>
                 <ItemList productos={productos}/>     
                     
                 </div>
     )
 }
-// los eventos me disparan una nueva ejecución del componente donde se esta ejecutando 
+
 
 export default ItemListContainer

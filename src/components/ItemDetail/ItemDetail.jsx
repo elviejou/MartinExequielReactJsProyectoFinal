@@ -4,16 +4,14 @@ import { useCartContext } from "../../Context/CartContext"
 import { useState } from 'react'
 
 const ItemDetail = ({producto}) => {
-    const [isCounter, setIsCounter] = useState(true)
+    const [cantidad, setCantidad] = useState(true)
     const {listaCarrito, agregarAlCarrito} = useCartContext()
     const onAdd = (cantidadAgregada) => {
-        console.log(cantidadAgregada)
         agregarAlCarrito({...producto, cantidadAgregada})
     }
-    console.log (listaCarrito)
   return (
         <div className='detalleProducto'>
-            <img src={producto.imagen} className="w-50"  /><br />
+            <img src={producto.imagen} className="imagenItem"  /><br />
             <div className='productoDetalle'>
             
                 <div className='nombreProductoDetalle'>

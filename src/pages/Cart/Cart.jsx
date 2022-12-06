@@ -11,26 +11,81 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { useState } from "react";
+import Swal from 'sweetalert2'
+
 
 
 
 const Cart = () => {
+  const [ formulario, setFormulario ] = useState({
+  nombre:'',
+  email: '',
+  repetirEmail: '',
+  telefono: ''
+  
+})
 
 const { listaCarrito, vaciarCarrito, precioTotal, eliminarProducto} = useCartContext()
 
-const finalizarCompra = () => {
+
+const finalizarCompra = (evt) => {
+  evt.preventDefault()
   let compra = {}
-  compra.cliente = {name: '', email: '', telefono: ''}
+  compra.cliente = formulario
   compra.total = precioTotal()
-  console.log (compra)
+  compra.productostienda = listaCarrito.map((producto ) => {
+    return{ 
+                                                              id: producto.id, 
+                                                              Descripcion:producto.descripcion, 
+                                                              Cantidad:producto.cantidadAgregada, 
+                                                              Precio:producto.precio
+                                                            }
+  }) 
 
-
+  
+  const db = getFirestore()
+  const queryCompras = collection(db, 'compras')
+  addDoc(queryCompras, compra)
+  .then (compra => { 
+    const idCompra = (compra.id)
+    Swal.fire({
+      title: "El total de su compra es $" + precioTotal().toFixed(2),
+      text: "Gracias por comprar en FRANPAPEL SRL. Su codigo de compra es:  " + idCompra,
+      icon: "success",
+      confirmButtonText : "Acepto",
+      confirmButtonColor : "green",
+      timer: 5000,
+      imageHeight: 400,
+      imageAlt: ``  
+    })
+    
+  })
+  .finally(()=> {   
+    vaciarCarrito()
+    setFormulario({ 
+    nombre:'',
+    email: '',
+    repetirEmail: '',
+    telefono: ''
+   })
+  })
 }
 
+const handleOnChange = (evt) => {
+evt.target.name
+evt.target.value
+
+setFormulario({
+  ...formulario,
+  [evt.target.name]: evt.target.value
+
+})
+}
   
   return (
     <div>  
-
         <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="h-100 py-5">
         <MDBRow className="justify-content-center align-items-center h-100">
@@ -129,60 +184,58 @@ const finalizarCompra = () => {
                       tag="h3"
                       className="mb-5 pt-2 text-center fw-bold text-uppercase"
                     >
-                      Metodo de Pago
+                      Datos de Pago
                     </MDBTypography>
 
-                    <form className="mb-5">
+                    <form className="mb-5" onSubmit={finalizarCompra}>
+                      
                       <MDBInput
-                        className="mb-5"
-                        label="Numero Tarjeta"
+                        name="nombre" 
                         type="text"
+                        className="mb-5"
                         size="lg"
-                        defaultValue="1234 5678 9012 3457"
+                        onChange={handleOnChange}
+                        placeholder="Nombre y Apellido"
+                        value={formulario.nombre}
+                        required
                       />
 
                       <MDBInput
-                        className="mb-5"
-                        label="Nombre Completo"
+                        name="email"
                         type="text"
+                        className="mb-5"
                         size="lg"
-                        defaultValue="Martin Exequiel Calo"
+                        onChange={handleOnChange}
+                        placeholder="E-mail"
+                        value={formulario.email}
+                        required
                       />
+                      <MDBInput
+                        name="repetirEmail"
+                        type="text"
+                        className="mb-5"
+                        size="lg"
+                        placeholder="Repetir E-mail"
+                        onChange={handleOnChange}
+                        value={formulario.repetirEmail}
+                        required
+                      />
+                      <MDBInput
+                        name="telefono"
+                        type="tel"
+                        className="mb-5"
+                        size="lg"
+                        placeholder="Teléfono"
+                        onChange={handleOnChange}
+                        value={formulario.telefono}
+                        required
+                      />
+                      
 
-                      <MDBRow>
-                        <MDBCol md="6" className="mb-5">
-                          <MDBInput
-                            className="mb-4"
-                            label="Fecha de Expiración"
-                            type="text"
-                            size="lg"
-                            minLength="7"
-                            maxLength="7"
-                            defaultValue="01/22"
-                            placeholder="MM/YYYY"
-                          />
-                        </MDBCol>
-                        <MDBCol md="6" className="mb-5">
-                          <MDBInput
-                            className="mb-4"
-                            label="Cvv"
-                            type="text"
-                            size="lg"
-                            minLength="3"
-                            maxLength="3"
-                            placeholder="&#9679;&#9679;&#9679;"
-                            defaultValue="&#9679;&#9679;&#9679;"
-                          />
-                        </MDBCol>
-                      </MDBRow>
-
-                      <p className="mb-5">
+                      <div className="mb-5">
                         Al darle a boton Comprar está aceptando nuestros
                         <a href="#!" className="text-danger"> Términos y Condiciones</a>.
-                      </p>
-
-                      <button className="bg-danger"  onClick={finalizarCompra} >Finalizar Compra</button>
-
+                      </div>
                       <MDBTypography
                         tag="h5"
                         className="fw-bold mb-5 text-danger"
@@ -190,20 +243,27 @@ const finalizarCompra = () => {
                       >
                         <a href="/categoria/" className="text-danger">
                           <MDBIcon icon="angle-left" />
-                          Volver a la tienda
+                          Volver a la tienda    
                         </a>
+                        <br />
                       </MDBTypography>
                     </form>
+
                   </MDBCol>
+                  <button className="bg-danger"  onClick={finalizarCompra} >Finalizar Compra</button>
                 </MDBRow>
+                
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
         </MDBRow>
+        
       </MDBContainer>
     </section>
-    </div>
+   </div>
+   
   )
+
 }
 
 export default Cart

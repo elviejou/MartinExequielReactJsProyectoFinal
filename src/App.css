@@ -63,7 +63,7 @@ flex-wrap: wrap;
 }
 
 .tarjeta2{
-  width:230px;
+  width:300px;
       display: flex;
       flex-direction: column;
       text-align: center;
@@ -126,6 +126,7 @@ flex-wrap: wrap;
 }
 .detalleProducto{
   display: flex;
+  justify-content: center;
 
 }
 .agregarCarritoDetalle{
@@ -141,4 +142,39 @@ flex-wrap: wrap;
 .precioProductoDetalle{
   margin-top: 30px;
   font-size: 35px !important;
+}
+
+.imagenItem{
+  width: 30% ;
+}
+
+.loaderRayo{
+  display: flex;
+  justify-content: center;
+}
+
+.cantidadCarrito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: red;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  width: 30px;
+  height: 30px;
+}
+
+.linksMenu a{
+  list-style: none;
+  color: rgb(66, 66, 66);
+  font-size: 25px;
+  margin: 20px;
+
+}
+.linksMenu{
+  list-style: none;
+  margin: 20px;
+
 }

@@ -1,23 +1,42 @@
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import ItemDetail from '../../components/ItemDetail/ItemDetail'
-import {productosTienda} from '../../utils/productosTienda'
+import {useState, useEffect} from 'react'
+import { useParams } from 'react-router';
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import ItemDetail from '../../components/ItemDetail/ItemDetail';
+import BoltLoader from '../../utils/boltloader'
+
+
 
 const ItemDetailContainer = () => {
-const [producto, setProducto] = useState({})
-const {productId} = useParams()
+  const [producto, setProducto] = useState({})
+  const [loading, setLoading] = useState(true)
+  const { productId } = useParams()
+  
 
-useEffect(()=> {
-       productosTienda(productId)
-      .then(resp => setProducto(resp))          
-  },[])
+  useEffect(() => {
+      const db = getFirestore()
+      const queryDb = doc(db, 'productostienda', productId)
+      getDoc(queryDb)
+      .then(doc => setProducto( { id: doc.id, ...doc.data() } ))
+      .catch(err => console.log(err))
+      .finally(()=>setLoading(false))
+  },[productId])
 
-  console.log(producto)
-  return (
-    <div>
-      <ItemDetail producto={producto}/>
-    </div>
-  )
+
+return (
+ 
+  loading 
+  ? 
+  <div className='loaderRayo'>
+      <BoltLoader
+          boltColor={"#ff0000"}
+          backgroundBlurColor={"#E0E7FF"}
+      />
+  </div>     
+  : <ItemDetail producto={producto} />
+
+        
+ 
+)
 }
 
 export default ItemDetailContainer

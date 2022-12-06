@@ -9,5 +9,6 @@ const ItemList = memo( ({productos}) => {
     productos.map( listaProductos =>  <Item key={listaProductos.id} listaProductos={listaProductos} />  )
   )
 }
+
 )
 export default ItemList

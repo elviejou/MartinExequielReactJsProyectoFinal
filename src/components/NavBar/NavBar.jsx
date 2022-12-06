@@ -34,33 +34,28 @@ const NavBar = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">NOSOTROS</Nav.Link>
-            <Nav.Link href="#action2">CONTACTO</Nav.Link>
-            <Nav.Link href="#action5">UBICACIÓN</Nav.Link>
-            <NavDropdown title="CATEGORIAS PRODUCTOS" id="navbarScrollingDropdown">
-              <Link to='/'>Todos</Link><br />
-              <Link to='/categoria/Cuadernos'>Cuadernos</Link><br />
-              <Link to='/categoria/Agendas'>Agendas</Link><br />
-              <Link to='/categoria/Marcadores'>Marcadores</Link><br />
-              <Link to='/categoria/Varios'>Varios</Link><br />
-            </NavDropdown>
+            <div className='linksMenu'>
+            <Link to='/'>Todos</Link>
+            <Link to='/categoria/Agendas'>Agendas</Link>
+            <Link to='/categoria/Cuadernos'>Cuadernos</Link>
+            <Link to='/categoria/Marcadores'>Marcadores</Link>
+            <Link to='/categoria/Varios'>Varios</Link>
+            <Link to='/categoria/Cuadernos'>Cuadernos</Link>
+            </div>
           </Nav>
-           <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Buscar productos"
-              className="me-2"
-            />
-            <Button variant="danger" className="bi-search" ></Button>
-           </Form>
+
            <Nav>
+                    <div className='cantidadCarrito'>
+                    { cantidadTotal() != 0 && cantidadTotal()}
+                    </div>
                     <Link to="/cart">
-                      
-                        <Cartwidget  /> { cantidadTotal() != 0 && cantidadTotal() }
+                    
+                        <Cartwidget /> 
                     </Link>
-                    <Link to="#">
-                        <UserWidget />
-                    </Link>
+                    
+                    
+                    
+
             </Nav>
          
         </Navbar.Collapse>
